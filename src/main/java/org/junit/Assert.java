@@ -22,6 +22,7 @@ import org.junit.internal.InexactComparisonCriteria;
  * @see AssertionError
  * @since 4.0
  */
+@Deprecated
 public class Assert {
     /**
      * Protect constructor since it is a static only class
