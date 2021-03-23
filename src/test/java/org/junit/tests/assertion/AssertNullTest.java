@@ -2,6 +2,7 @@ package org.junit.tests.assertion;
 
 import static org.junit.asserts.AssertNull.assertNull;
 import static org.junit.asserts.AssertEquals.assertEquals;
+import static org.junit.asserts.Fail.fail;
 
 import org.junit.Test;
 
@@ -28,6 +29,18 @@ public class AssertNullTest {
             assertNull("message", "hello");
         } catch (AssertionError exception) {
             assertEquals("message expected null, but was:<hello>", exception.getMessage());
+            return;
+        }
+        throw new AssertionError(ASSERTION_ERROR_EXPECTED);
+    }
+    
+    @Test
+    public void nullMessage() {
+        try {
+            fail(null);
+        } catch (AssertionError exception) {
+            // we used to expect getMessage() to return ""; see failWithNoMessageToString()
+            assertNull(exception.getMessage());
             return;
         }
         throw new AssertionError(ASSERTION_ERROR_EXPECTED);

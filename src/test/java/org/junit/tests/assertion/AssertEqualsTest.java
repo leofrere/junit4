@@ -145,4 +145,62 @@ public class AssertEqualsTest {
         assertEquals(Float.NaN, Float.NaN, Float.POSITIVE_INFINITY);
         assertEquals(Double.NaN, Double.NaN, Double.POSITIVE_INFINITY);
     }
+    
+    @Test
+    public void nullMessageDisappearsWithStringAssertEquals() {
+        try {
+            assertEquals(null, "a", "b");
+        } catch (ComparisonFailure e) {
+            assertEquals("expected:<[a]> but was:<[b]>", e.getMessage());
+            return;
+        }
+        throw new AssertionError(ASSERTION_ERROR_EXPECTED);
+    }
+
+    @Test
+    public void nullMessageDisappearsWithAssertEquals() {
+        try {
+            assertEquals(null, 1, 2);
+        } catch (AssertionError e) {
+            assertEquals("expected:<1> but was:<2>", e.getMessage());
+            return;
+        }
+        throw new AssertionError(ASSERTION_ERROR_EXPECTED);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void arraysDeclaredAsObjectAreComparedAsObjects() {
+        Object a1 = new Object[]{"abc"};
+        Object a2 = new Object[]{"abc"};
+        assertEquals(a1, a2);
+    }
+
+    @Test
+    public void implicitTypecastEquality() {
+        byte b = 1;
+        short s = 1;
+        int i = 1;
+        long l = 1L;
+        float f = 1.0f;
+        double d = 1.0;
+
+        assertEquals(b, s);
+        assertEquals(b, i);
+        assertEquals(b, l);
+        assertEquals(s, i);
+        assertEquals(s, l);
+        assertEquals(i, l);
+        assertEquals(f, d, 0);
+    }
+
+    @Test
+    public void errorMessageDistinguishesDifferentValuesWithSameToString() {
+        try {
+            assertEquals("4", new Integer(4));
+        } catch (AssertionError e) {
+            assertEquals("expected: java.lang.String<4> but was: java.lang.Integer<4>", e.getMessage());
+            return;
+        }
+        throw new AssertionError(ASSERTION_ERROR_EXPECTED);
+    }
 }
