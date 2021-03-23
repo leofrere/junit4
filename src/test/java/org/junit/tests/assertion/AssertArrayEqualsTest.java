@@ -323,4 +323,12 @@ public class AssertArrayEqualsTest {
         Object[] objects2 = new Object[]{element};
         assertArrayEquals("equal", objects1, objects2);
     }
+    
+    @Test
+    public void floatsNotDoublesInArrays() {
+        float delta = 4.444f;
+        float[] f1 = new float[]{1.111f};
+        float[] f2 = new float[]{5.555f};
+        assertArrayEquals(f1, f2, delta);
+    }
 }
