@@ -21,6 +21,7 @@ import org.junit.internal.InexactComparisonCriteria;
  *
  * @see AssertionError
  * @since 4.0
+ * @deprecated Please use {@link org.junit.asserts} instead.
  */
 @Deprecated
 public class Assert {
