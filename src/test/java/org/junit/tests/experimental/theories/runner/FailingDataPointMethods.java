@@ -24,7 +24,7 @@ public class FailingDataPointMethods {
         }
 
         @Theory
-        public void theory(int x) {
+        public void theory(int entier) {
         }
     }
 
@@ -44,7 +44,7 @@ public class FailingDataPointMethods {
         }
 
         @Theory
-        public void theory(int x) {
+        public void theory(int entier) {
         }
     }
 
@@ -64,7 +64,7 @@ public class FailingDataPointMethods {
         }
 
         @Theory
-        public void theory(int x) {
+        public void theory(int entier) {
         }
     }
     
@@ -84,7 +84,7 @@ public class FailingDataPointMethods {
         }
 
         @Theory
-        public void theory(int x) {
+        public void theory(int entier) {
         }
     }
     
@@ -104,7 +104,7 @@ public class FailingDataPointMethods {
         }
 
         @Theory
-        public void theory(int x) {
+        public void theory(int entier) {
         }
     }    
     
@@ -124,7 +124,7 @@ public class FailingDataPointMethods {
         }
 
         @Theory
-        public void theory(int x) {
+        public void theory(int entier) {
         }
     }    
     

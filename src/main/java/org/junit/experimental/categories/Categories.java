@@ -226,12 +226,13 @@ public class Categories extends Suite {
             return description.toString();
         }
         /**
+         * fonction who go test if the type description can function or not
          * @param description
-         * @return true
-         *      si le paramètre a la bonne categorie
-         *      ou bien l'un de c'est fils si il en dispose
-         * @return false
-         *      si aucun des deux n'a la bonne categorie
+         * @return true :
+         *      if the setting has the right categorie
+         *      or one of these son if there are
+         * false :
+         *      if none of two don't have the rigth categorie
          */
         @Override
         public boolean shouldRun(Description description) { 
@@ -248,12 +249,13 @@ public class Categories extends Suite {
             return false;
         }
         /**
+         * fonction who go matches the setting between included and excluded as well as there fils if he has it
          * @param description
-         * @return false
-         * si la categorie est exclused 
-         * si aucun des parents ne correspond au fils  
-         * true
-         * si un ou tous les parents on la meme categorie que leur fils
+         * @return false :
+         * if the categorie is exclused 
+         * if none of parents do not matches to these son
+         * true :
+         * if the parents has one or all same categorie like there son
          */
         private boolean hasCorrectCategoryAnnotation(Description description) {
             final Set<Class<?>> childCategories = categories(description);
@@ -274,7 +276,6 @@ public class Categories extends Suite {
                     }
                 }
             }
-
             if (included.isEmpty()) {
                 // Couldn't be excluded, and with no suite's included categories
                 // treated as should run.

@@ -23,8 +23,8 @@ public class UnsuccessfulWithDataPointFields {
         public static int ONE = 1;
 
         @Theory
-        public void everythingIsZero(int x) {
-            assertThat(x, is(0));
+        public void everythingIsZero(int entier) {
+            assertThat(entier, is(0));
         }
     }
 
@@ -52,7 +52,7 @@ public class UnsuccessfulWithDataPointFields {
         public static int ONE = 1;
 
         @Theory
-        public void everythingIsZero(int x, int y) {
+        public void everythingIsZero(int entierX, int entierY) {
             assertThat(2, is(3));
         }
     }
@@ -72,8 +72,8 @@ public class UnsuccessfulWithDataPointFields {
         public static String A = "A";
 
         @Theory
-        public void everythingIsA(String a) {
-            assertThat(a, is("A"));
+        public void everythingIsA(String string) {
+            assertThat(string, is("A"));
         }
     }
 
@@ -89,7 +89,7 @@ public class UnsuccessfulWithDataPointFields {
         public static int THREE = 3;
 
         @Theory
-        void numbers(int x) {
+        void numbers(int entier) {
 
         }
     }
@@ -110,7 +110,7 @@ public class UnsuccessfulWithDataPointFields {
         public int[] FOURS = new int[] { 4 };
         
         @Theory
-        public void numbers(int x) {
+        public void numbers(int entier) {
 
         }
     }

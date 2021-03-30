@@ -27,8 +27,8 @@ public class SuccessfulWithDataPointFields {
         public static int ONE = 1;
 
         @Theory
-        public void allIntsAreEqual(int x, int y) {
-            assertThat(x, is(y));
+        public void allIntsAreEqual(int entierX, int entierY) {
+            assertThat(entierX, is(entierY));
         }
     }
 
@@ -72,16 +72,16 @@ public class SuccessfulWithDataPointFields {
         @DataPoint
         public static final int ONE = 1;
 
-        private int x;
+        private int entier;
 
-        public PositiveInts(int x) {
-            assumeTrue(x > 0);
-            this.x = x;
+        public PositiveInts(int entier) {
+            assumeTrue(entier > 0);
+            this.entier = entier;
         }
 
         @Theory
         public void haveAPostiveSquare() {
-            assertTrue(x * x > 0);
+            assertTrue(entier * entier > 0);
         }
     }
 
@@ -92,16 +92,16 @@ public class SuccessfulWithDataPointFields {
         @DataPoint
         public static final int NEGONE = -1;
 
-        private int x;
+        private int entier;
 
         public PositiveIntsWithNegativeField(int x) {
-            assumeTrue(x > 0);
-            this.x = x;
+            assumeTrue(entier > 0);
+            this.entier = entier;
         }
 
         @Theory
         public void haveAPostiveSquare() {
-            assertTrue(x > 0);
+            assertTrue(entier > 0);
         }
     }
 
@@ -110,17 +110,17 @@ public class SuccessfulWithDataPointFields {
         @DataPoint
         public static final int ONE = 1;
 
-        private int x;
+        private int entier;
 
-        public PositiveIntsWithMethodParams(int x) {
-            assumeTrue(x > 0);
-            this.x = x;
+        public PositiveIntsWithMethodParams(int entier) {
+            assumeTrue(entier > 0);
+            this.entier = entier;
         }
 
         @Theory
-        public void haveAPostiveSquare(int y) {
-            assumeTrue(y > 0);
-            assertTrue(x * y > 0);
+        public void haveAPostiveSquare(int entierY) {
+            assumeTrue(entierY > 0);
+            assertTrue(entier * entierY > 0);
         }
     }
 
@@ -132,11 +132,11 @@ public class SuccessfulWithDataPointFields {
         @DataPoint
         public static final String A = "A";
 
-        public DifferentTypesInConstructor(int x) {
+        public DifferentTypesInConstructor(int entier) {
         }
 
         @Theory
-        public void yesIndeed(String a) {
+        public void yesIndeed(String string) {
         }
     }
 

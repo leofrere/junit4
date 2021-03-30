@@ -56,9 +56,9 @@ public class MainRunner {
             runnable.run();
             System.out.println("System.exit() not called, return null");
             return null;
-        } catch (ExitException e) {
-            System.out.println("System.exit() called, value=" + e.getStatus());
-            return e.getStatus();
+        } catch (ExitException exception) {
+            System.out.println("System.exit() called, value=" + exception.getStatus());
+            return exception.getStatus();
         } finally {
             System.setSecurityManager(oldSecurityManager);
             System.setOut(oldOut);

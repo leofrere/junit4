@@ -24,8 +24,8 @@ public class BlockJUnit4ClassRunnerTest {
     public void detectNonStaticEnclosedClass() throws Exception {
         try {
             new BlockJUnit4ClassRunner(OuterClass.Enclosed.class);
-        } catch (InitializationError e) {
-            List<Throwable> causes = e.getCauses();
+        } catch (InitializationError error) {
+            List<Throwable> causes = error.getCauses();
             assertEquals("Wrong number of causes.", 1, causes.size());
             assertEquals(
                     "Wrong exception.",

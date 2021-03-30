@@ -28,23 +28,23 @@ public class FilterTest {
 
     @Test
     public void intersectionText() {
-        NamedFilter a = new NamedFilter("a");
-        NamedFilter b = new NamedFilter("b");
-        assertEquals("a and b", a.intersect(b).describe());
-        assertEquals("b and a", b.intersect(a).describe());
+        NamedFilter filterA = new NamedFilter("a");
+        NamedFilter filterB = new NamedFilter("b");
+        assertEquals("a and b", filterA.intersect(filterB).describe());
+        assertEquals("b and a", filterB.intersect(filterA).describe());
     }
 
     @Test
     public void intersectSelf() {
-        NamedFilter a = new NamedFilter("a");
-        assertSame(a, a.intersect(a));
+        NamedFilter filterA = new NamedFilter("a");
+        assertSame(filterA, filterA.intersect(filterA));
     }
 
     @Test
     public void intersectAll() {
-        NamedFilter a = new NamedFilter("a");
-        assertSame(a, a.intersect(Filter.ALL));
-        assertSame(a, Filter.ALL.intersect(a));
+        NamedFilter filterA = new NamedFilter("a");
+        assertSame(filterA, filterA.intersect(Filter.ALL));
+        assertSame(filterA, Filter.ALL.intersect(filterA));
         assertSame(Filter.ALL, Filter.ALL.intersect(Filter.ALL));
     }
 }

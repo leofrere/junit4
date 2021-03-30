@@ -170,8 +170,8 @@ public class ParameterizedTestMethodTest {
     private List<Throwable> validateAllMethods(Class<?> clazz) {
         try {
             new BlockJUnit4ClassRunner(clazz);
-        } catch (InitializationError e) {
-            return e.getCauses();
+        } catch (InitializationError error) {
+            return error.getCauses();
         }
         return Collections.emptyList();
     }

@@ -121,9 +121,9 @@ public class JUnit38ClassRunnerTest {
     }
 
     private void assertAnnotationFiltering(JUnit38ClassRunner runner) {
-        Description d = runner.getDescription();
-        assertEquals(2, d.testCount());
-        for (Description methodDesc : d.getChildren()) {
+        Description description = runner.getDescription();
+        assertEquals(2, description.testCount());
+        for (Description methodDesc : description.getChildren()) {
             if (methodDesc.getMethodName().equals("testAnnotated")) {
                 assertNotNull(methodDesc.getAnnotation(MyAnnotation.class));
             } else {
