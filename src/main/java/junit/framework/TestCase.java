@@ -175,12 +175,12 @@ public abstract class TestCase extends Assert implements Test {
 
         try {
             runMethod.invoke(this);
-        } catch (InvocationTargetException e) {
-            e.fillInStackTrace();
-            throw e.getTargetException();
-        } catch (IllegalAccessException e) {
-            e.fillInStackTrace();
-            throw e;
+        } catch (InvocationTargetException invTarExeception) {
+            invTarExeception.fillInStackTrace();
+            throw invTarExeception.getTargetException();
+        } catch (IllegalAccessException illAccException) {
+            illAccException.fillInStackTrace();
+            throw illAccException;
         }
     }
 

@@ -45,12 +45,12 @@ public class MultipleFailureException extends Exception {
 
     @Override
     public String getMessage() {
-        StringBuilder sb = new StringBuilder(
+        StringBuilder stringBuilder = new StringBuilder(
                 String.format("There were %d errors:", fErrors.size()));
         for (Throwable e : fErrors) {
-            sb.append(String.format("%n  %s(%s)", e.getClass().getName(), e.getMessage()));
+            stringBuilder.append(String.format("%n  %s(%s)", e.getClass().getName(), e.getMessage()));
         }
-        return sb.toString();
+        return stringBuilder.toString();
     }
 
     @Override
@@ -61,16 +61,16 @@ public class MultipleFailureException extends Exception {
     }
     
     @Override
-    public void printStackTrace(PrintStream s) {
+    public void printStackTrace(PrintStream stream) {
         for (Throwable e: fErrors) {
-            e.printStackTrace(s);
+            e.printStackTrace(stream);
         }
     }
     
     @Override
-    public void printStackTrace(PrintWriter s) {
+    public void printStackTrace(PrintWriter stream) {
         for (Throwable e: fErrors) {
-            e.printStackTrace(s);
+            e.printStackTrace(stream);
         }
     }
     

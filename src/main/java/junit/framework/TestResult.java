@@ -117,12 +117,12 @@ public class TestResult {
      */
     protected void run(final TestCase test) {
         startTest(test);
-        Protectable p = new Protectable() {
+        Protectable protectable = new Protectable() {
             public void protect() throws Throwable {
                 test.runBare();
             }
         };
-        runProtected(test, p);
+        runProtected(test, protectable);
 
         endTest(test);
     }
@@ -137,9 +137,9 @@ public class TestResult {
     /**
      * Runs a TestCase.
      */
-    public void runProtected(final Test test, Protectable p) {
+    public void runProtected(final Test test, Protectable protectable) {
         try {
-            p.protect();
+            protectable.protect();
         } catch (AssertionFailedError e) {
             addFailure(test, e);
         } catch (ThreadDeath e) { // don't catch ThreadDeath by accident

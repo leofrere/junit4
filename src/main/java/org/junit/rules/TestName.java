@@ -28,8 +28,8 @@ public class TestName extends TestWatcher {
     private volatile String name;
 
     @Override
-    protected void starting(Description d) {
-        name = d.getMethodName();
+    protected void starting(Description description) {
+        name = description.getMethodName();
     }
 
     /**

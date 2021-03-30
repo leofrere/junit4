@@ -56,11 +56,11 @@ public abstract class BaseTestRunner implements TestListener {
     }
 
     public static void savePreferences() throws IOException {
-        FileOutputStream fos = new FileOutputStream(getPreferencesFile());
+        FileOutputStream stream = new FileOutputStream(getPreferencesFile());
         try {
-            getPreferences().store(fos, "");
+            getPreferences().store(stream, "");
         } finally {
-            fos.close();
+            stream.close();
         }
     }
 
@@ -193,11 +193,11 @@ public abstract class BaseTestRunner implements TestListener {
     /**
      * Truncates a String to the maximum length.
      */
-    public static String truncate(String s) {
-        if (fgMaxMessageLength != -1 && s.length() > fgMaxMessageLength) {
-            s = s.substring(0, fgMaxMessageLength) + "...";
+    public static String truncate(String message) {
+        if (fgMaxMessageLength != -1 && message.length() > fgMaxMessageLength) {
+            message = message.substring(0, fgMaxMessageLength) + "...";
         }
-        return s;
+        return message;
     }
 
     /**
@@ -278,22 +278,22 @@ public abstract class BaseTestRunner implements TestListener {
             return stack;
         }
 
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        StringReader sr = new StringReader(stack);
-        BufferedReader br = new BufferedReader(sr);
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter printWriter = new PrintWriter(stringWriter);
+        StringReader stringReader = new StringReader(stack);
+        BufferedReader bufferedReader = new BufferedReader(stringReader);
 
         String line;
         try {
-            while ((line = br.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 if (!filterLine(line)) {
-                    pw.println(line);
+                    printWriter.println(line);
                 }
             }
         } catch (Exception IOException) {
             return stack; // return the stack unfiltered
         }
-        return sw.toString();
+        return stringWriter.toString();
     }
 
     protected static boolean showStackRaw() {

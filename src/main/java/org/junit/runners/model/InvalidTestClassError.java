@@ -20,13 +20,13 @@ public class InvalidTestClassError extends InitializationError {
     }
 
     private static String createMessage(Class<?> testClass, List<Throwable> validationErrors) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("Invalid test class '%s':", testClass.getName()));
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(String.format("Invalid test class '%s':", testClass.getName()));
         int i = 1;
         for (Throwable error : validationErrors) {
-            sb.append("\n  " + (i++) + ". " + error.getMessage());
+            stringBuilder.append("\n  " + (i++) + ". " + error.getMessage());
         }
-        return sb.toString();
+        return stringBuilder.toString();
     }
 
     /**

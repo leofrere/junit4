@@ -48,31 +48,31 @@ public class ResultPrinter implements TestListener {
         printDefects(result.failures(), result.failureCount(), "failure");
     }
 
-    protected void printDefects(Enumeration<TestFailure> booBoos, int count, String type) {
+    protected void printDefects(Enumeration<TestFailure> testFailures, int count, String type) {
         if (count == 0) return;
         if (count == 1) {
             getWriter().println("There was " + count + " " + type + ":");
         } else {
             getWriter().println("There were " + count + " " + type + "s:");
         }
-        for (int i = 1; booBoos.hasMoreElements(); i++) {
-            printDefect(booBoos.nextElement(), i);
+        for (int i = 1; testFailures.hasMoreElements(); i++) {
+            printDefect(testFailures.nextElement(), i);
         }
     }
 
-    public void printDefect(TestFailure booBoo, int count) { // only public for testing purposes
-        printDefectHeader(booBoo, count);
-        printDefectTrace(booBoo);
+    public void printDefect(TestFailure testFailure, int count) { // only public for testing purposes
+        printDefectHeader(testFailure, count);
+        printDefectTrace(testFailure);
     }
 
-    protected void printDefectHeader(TestFailure booBoo, int count) {
+    protected void printDefectHeader(TestFailure testFailure, int count) {
         // I feel like making this a println, then adding a line giving the throwable a chance to print something
         // before we get to the stack trace.
-        getWriter().print(count + ") " + booBoo.failedTest());
+        getWriter().print(count + ") " + testFailure.failedTest());
     }
 
-    protected void printDefectTrace(TestFailure booBoo) {
-        getWriter().print(BaseTestRunner.getFilteredTrace(booBoo.trace()));
+    protected void printDefectTrace(TestFailure testFailure) {
+        getWriter().print(BaseTestRunner.getFilteredTrace(testFailure.trace()));
     }
 
     protected void printFooter(TestResult result) {
@@ -113,7 +113,7 @@ public class ResultPrinter implements TestListener {
     /**
      * @see junit.framework.TestListener#addFailure(Test, AssertionFailedError)
      */
-    public void addFailure(Test test, AssertionFailedError t) {
+    public void addFailure(Test test, AssertionFailedError e) {
         getWriter().print("F");
     }
 

@@ -110,14 +110,14 @@ public class Result implements Serializable {
         return getFailureCount() == 0;
     }
 
-    private void writeObject(ObjectOutputStream s) throws IOException {
+    private void writeObject(ObjectOutputStream stream) throws IOException {
         SerializedForm serializedForm = new SerializedForm(this);
-        serializedForm.serialize(s);
+        serializedForm.serialize(stream);
     }
 
-    private void readObject(ObjectInputStream s)
+    private void readObject(ObjectInputStream stream)
             throws ClassNotFoundException, IOException {
-        serializedForm = SerializedForm.deserialize(s);
+        serializedForm = SerializedForm.deserialize(stream);
     }
 
     private Object readResolve()  {
@@ -208,9 +208,9 @@ public class Result implements Serializable {
             s.writeFields();
         }
 
-        public static SerializedForm deserialize(ObjectInputStream s)
+        public static SerializedForm deserialize(ObjectInputStream stream)
                 throws ClassNotFoundException, IOException {
-            ObjectInputStream.GetField fields = s.readFields();
+            ObjectInputStream.GetField fields = stream.readFields();
             return new SerializedForm(fields);
         }
     }

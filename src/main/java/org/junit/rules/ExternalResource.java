@@ -52,13 +52,13 @@ public abstract class ExternalResource implements TestRule {
                 List<Throwable> errors = new ArrayList<Throwable>();
                 try {
                     base.evaluate();
-                } catch (Throwable t) {
-                    errors.add(t);
+                } catch (Throwable e) {
+                    errors.add(e);
                 } finally {
                     try {
                         after();
-                    } catch (Throwable t) {
-                        errors.add(t);
+                    } catch (Throwable e) {
+                        errors.add(e);
                     }
                 }
                 MultipleFailureException.assertEmpty(errors);
