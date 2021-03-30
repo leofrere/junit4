@@ -281,14 +281,14 @@ public class TestSuite implements Test {
         return super.toString();
     }
 
-    private void addTestMethod(Method m, List<String> names, Class<?> theClass) {
-        String name = m.getName();
+    private void addTestMethod(Method method, List<String> names, Class<?> theClass) {
+        String name = method.getName();
         if (names.contains(name)) {
             return;
         }
-        if (!isPublicTestMethod(m)) {
-            if (isTestMethod(m)) {
-                addTest(warning("Test method isn't public: " + m.getName() + "(" + theClass.getCanonicalName() + ")"));
+        if (!isPublicTestMethod(method)) {
+            if (isTestMethod(method)) {
+                addTest(warning("Test method isn't public: " + method.getName() + "(" + theClass.getCanonicalName() + ")"));
             }
             return;
         }
@@ -296,13 +296,13 @@ public class TestSuite implements Test {
         addTest(createTest(theClass, name));
     }
 
-    private boolean isPublicTestMethod(Method m) {
-        return isTestMethod(m) && Modifier.isPublic(m.getModifiers());
+    private boolean isPublicTestMethod(Method method) {
+        return isTestMethod(method) && Modifier.isPublic(method.getModifiers());
     }
 
-    private boolean isTestMethod(Method m) {
-        return m.getParameterTypes().length == 0 &&
-                m.getName().startsWith("test") &&
-                m.getReturnType().equals(Void.TYPE);
+    private boolean isTestMethod(Method method) {
+        return method.getParameterTypes().length == 0 &&
+                method.getName().startsWith("test") &&
+                method.getReturnType().equals(Void.TYPE);
     }
 }

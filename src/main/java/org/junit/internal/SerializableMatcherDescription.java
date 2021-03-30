@@ -23,7 +23,7 @@ class SerializableMatcherDescription<T> extends BaseMatcher<T> implements Serial
         matcherDescription = StringDescription.asString(matcher);
     }
 
-    public boolean matches(Object o) {
+    public boolean matches(Object object) {
         throw new UnsupportedOperationException("This Matcher implementation only captures the description");
     }
 

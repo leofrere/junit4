@@ -46,33 +46,33 @@ public class Assume {
     /**
      * If called with an expression evaluating to {@code false}, the test will halt and be ignored.
      */
-    public static void assumeTrue(boolean b) {
-        assumeThat(b, is(true));
+    public static void assumeTrue(boolean bool) {
+        assumeThat(bool, is(true));
     }
 
     /**
      * The inverse of {@link #assumeTrue(boolean)}.
      */
-    public static void assumeFalse(boolean b) {
-        assumeThat(b, is(false));
+    public static void assumeFalse(boolean bool) {
+        assumeThat(bool, is(false));
     }
 
     /**
      * If called with an expression evaluating to {@code false}, the test will halt and be ignored.
      *
-     * @param b If <code>false</code>, the method will attempt to stop the test and ignore it by
+     * @param bool If <code>false</code>, the method will attempt to stop the test and ignore it by
      * throwing {@link AssumptionViolatedException}.
      * @param message A message to pass to {@link AssumptionViolatedException}.
      */
-    public static void assumeTrue(String message, boolean b) {
-        if (!b) throw new AssumptionViolatedException(message);
+    public static void assumeTrue(String message, boolean bool) {
+        if (!bool) throw new AssumptionViolatedException(message);
     }
 
     /**
      * The inverse of {@link #assumeTrue(String, boolean)}.
      */
-    public static void assumeFalse(String message, boolean b) {
-        assumeTrue(message, !b);
+    public static void assumeFalse(String message, boolean bool) {
+        assumeTrue(message, !bool);
     }
 
     /**

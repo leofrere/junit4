@@ -26,7 +26,7 @@ public class Fail {
         fail(null);
     }
     
-    public static void failEquals(String message, Object actual) {
+    protected static void failEquals(String message, Object actual) {
         String formatted = "Values should be different. ";
         if (message != null) {
             formatted = message + ". ";
@@ -36,12 +36,12 @@ public class Fail {
         fail(formatted);
     }
     
-    public static void failNotEquals(String message, Object expected,
+    protected static void failNotEquals(String message, Object expected,
             Object actual) {
         fail(Format.format(message, expected, actual));
     }
     
-    public static void failNotNull(String message, Object actual) {
+    protected static void failNotNull(String message, Object actual) {
         String formatted = "";
         if (message != null) {
             formatted = message + " ";
@@ -49,7 +49,7 @@ public class Fail {
         fail(formatted + "expected null, but was:<" + actual + ">");
     }
     
-    public static void failSame(String message) {
+    protected static void failSame(String message) {
         String formatted = "";
         if (message != null) {
             formatted = message + " ";
@@ -57,7 +57,7 @@ public class Fail {
         fail(formatted + "expected not same");
     }
 
-    public static void failNotSame(String message, Object expected,
+    protected static void failNotSame(String message, Object expected,
             Object actual) {
         String formatted = "";
         if (message != null) {

@@ -199,8 +199,8 @@ public class BlockJUnit4ClassRunner extends ParentRunner<FrameworkMethod> {
         if (!getTestClass().isANonStaticInnerClass()
                 && hasOneConstructor()
                 && (getTestClass().getOnlyConstructor().getParameterTypes().length != 0)) {
-            String gripe = "Test class should have exactly one public zero-argument constructor";
-            errors.add(new Exception(gripe));
+            String message = "Test class should have exactly one public zero-argument constructor";
+            errors.add(new Exception(message));
         }
     }
 

@@ -235,12 +235,12 @@ public class Description implements Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Description)) {
+    public boolean equals(Object object) {
+        if (!(object instanceof Description)) {
             return false;
         }
-        Description d = (Description) obj;
-        return fUniqueId.equals(d.fUniqueId);
+        Description description = (Description) object;
+        return fUniqueId.equals(description.fUniqueId);
     }
 
     @Override
